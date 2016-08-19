@@ -3,9 +3,11 @@
   at your module via their corresponding functions (controller, service, etc.).
 */
 
-import NameService from './services/PersonService';
+import Services from './services/services';
 import Filters from './filters/filters';
 import Controllers from './controllers/controllers';
 
-angular.module('myApp', [Controllers.name, Filters.name])
-	.service('PersonService', NameService);
+angular.module('myApp', [
+	Controllers.name,
+	Filters.name,
+	Services.name]);

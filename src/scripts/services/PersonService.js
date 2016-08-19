@@ -1,6 +1,6 @@
 import Person from '../model/Person';
 
-export default class PersonService {
+class PersonService {
 
 	/*
 	  The below annotation will be processes by ngAnnotate, which
@@ -15,3 +15,5 @@ export default class PersonService {
 		return this._$q.when(new Person());
 	}
 }
+
+export default PersonService;
