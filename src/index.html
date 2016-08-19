@@ -7,6 +7,14 @@
 
 	Hello {{ ctrl.person.name | upper }}!
 
+
+
+	<ul>
+		<li ng-repeat="n in ctrl.phones" >
+			{{n.name}}
+		</li>
+	</ul>
+
 	<script src="libs/angular.min.js"></script>
 	<script src="scripts/app.min.js"></script>
 </body>

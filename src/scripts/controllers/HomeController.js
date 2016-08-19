@@ -12,6 +12,10 @@ class HomeController {
 		PersonService.getPerson().then(person => {
 			this.person = person;
 		});
+
+		PersonService.getPhones().then( response => {
+			this.phones = response.data;
+		});
 	}
 }
 

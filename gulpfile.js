@@ -10,6 +10,8 @@ var plugins = require('gulp-load-plugins')();
 var src = {
 	html: 'src/**/*.html',
 	libs: 'src/libs/**',
+	json: 'src/json/**',
+	img: 'src/img/**',
 	scripts: {
 		all: 'src/scripts/**/*.js',
 		app: 'src/scripts/app.js'
@@ -19,11 +21,13 @@ var src = {
 var build = 'build/';
 var out = {
 	libs: build + 'libs/',
+	src: build + 'src/',
+	json: build + 'src/json/',
 	scripts: {
 		file: 'app.min.js',
 		folder: build + 'scripts/'
 	}
-}
+};
 
 gulp.task('html', function() {
 	return gulp.src(src.html)
@@ -38,6 +42,20 @@ gulp.task('jshint', function() {
 			esnext: true // Enable ES6 support
 		}))
 		.pipe(plugins.jshint.reporter('jshint-stylish'));
+});
+
+gulp.task('images', function() {
+	/* In a real project you of course would use npm or bower to manage libraries. */
+	return gulp.src(src.img)
+		.pipe(gulp.dest(out.src))
+		.pipe(plugins.connect.reload());
+});
+
+gulp.task('json', function() {
+	/* In a real project you of course would use npm or bower to manage libraries. */
+	return gulp.src(src.json)
+		.pipe(gulp.dest(out.json))
+		.pipe(plugins.connect.reload());
 });
 
 gulp.task('libs', function() {
@@ -91,5 +109,5 @@ gulp.task('watch', function() {
 	gulp.watch(src.scripts.all, ['scripts']);
 })
 
-gulp.task('build', ['scripts', 'html', 'libs']);
+gulp.task('build', ['scripts', 'html', 'libs', 'json', 'images']);
 gulp.task('default', ['serve']);
