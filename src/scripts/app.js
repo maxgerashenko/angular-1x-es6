@@ -4,10 +4,8 @@
 */
 
 import NameService from './services/PersonService';
-import {UpperFilter, LowerFilter} from './filters/textFilters';
+import Filters from './filters/filters';
 import Controllers from './controllers/controllers';
 
-angular.module('myApp', [Controllers.name])
-	.service('PersonService', NameService)
-	.filter('upper', UpperFilter)
-	.filter('lower', LowerFilter);
+angular.module('myApp', [Controllers.name, Filters.name])
+	.service('PersonService', NameService);
