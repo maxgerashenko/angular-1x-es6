@@ -5,7 +5,7 @@
   constructor if you would use a class.
 */
 
-export default class HomeController {
+class HomeController {
 
 	/*@ngInject;*/
 	constructor(PersonService) {
@@ -13,5 +13,6 @@ export default class HomeController {
 			this.person = person;
 		});
 	}
-
 }
+
+export default HomeController;
