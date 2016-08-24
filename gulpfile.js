@@ -22,6 +22,7 @@ var build = 'build/';
 var out = {
 	libs: build + 'libs/',
 	src: build + 'src/',
+	img: build + 'src/img/',
 	json: build + 'src/json/',
 	scripts: {
 		file: 'app.min.js',
@@ -47,7 +48,7 @@ gulp.task('jshint', function() {
 gulp.task('images', function() {
 	/* In a real project you of course would use npm or bower to manage libraries. */
 	return gulp.src(src.img)
-		.pipe(gulp.dest(out.src))
+		.pipe(gulp.dest(out.img))
 		.pipe(plugins.connect.reload());
 });
 
