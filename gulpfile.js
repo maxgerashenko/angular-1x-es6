@@ -3,12 +3,14 @@ var babelify = require('babelify');
 var browserify = require('browserify');
 var vinylSourceStream = require('vinyl-source-stream');
 var vinylBuffer = require('vinyl-buffer');
+var flatten = require('gulp-flatten');
 
 // Load all gulp plugins into the plugins object.
 var plugins = require('gulp-load-plugins')();
 
 var src = {
 	html: 'src/**/*.html',
+	html2: 'src/scripts/components/**/*.html',
 	libs: 'src/libs/**',
 	json: 'src/json/**',
 	img: 'src/img/**',
@@ -23,6 +25,7 @@ var out = {
 	libs: build + 'libs/',
 	src: build + 'src/',
 	img: build + 'src/img/',
+	html2: build + 'src/templates',
 	json: build + 'src/json/',
 	scripts: {
 		file: 'app.min.js',
@@ -33,6 +36,13 @@ var out = {
 gulp.task('html', function() {
 	return gulp.src(src.html)
 		.pipe(gulp.dest(build))
+		.pipe(plugins.connect.reload());
+});
+
+gulp.task('html-templates', function() {
+	return gulp.src(src.html2)
+		.pipe(flatten())
+		.pipe(gulp.dest(out.html2))
 		.pipe(plugins.connect.reload());
 });
 
@@ -107,8 +117,9 @@ gulp.task('serve', ['build', 'watch'], function() {
 gulp.task('watch', function() {
 	gulp.watch(src.libs, ['libs']);
 	gulp.watch(src.html, ['html']);
+	gulp.watch(src.html2, ['html-templates']);
 	gulp.watch(src.scripts.all, ['scripts']);
-})
+});
 
-gulp.task('build', ['scripts', 'html', 'libs', 'json', 'images']);
+gulp.task('build', ['scripts', 'html', 'html-templates', 'libs', 'json', 'images']);
 gulp.task('default', ['serve']);
