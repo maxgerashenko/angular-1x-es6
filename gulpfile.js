@@ -38,9 +38,8 @@ gulp.task('html', function() {
 		.pipe(gulp.dest(build))
 		.pipe(plugins.connect.reload());
 });
-
 gulp.task('css', function() {
-	return gulp.src('bower_components/**/*.min.css')
+	return gulp.src('bower_components/**/*.{min.css,min.css.map,min.map}')
 		.pipe(flatten())
 		.pipe(gulp.dest(build+'css'))
 		.pipe(plugins.connect.reload());

@@ -16,6 +16,8 @@ class HomeController {
 		PersonService.getPhones().then( response => {
 			this.phones = response.data;
 		});
+
+		this.query = this.query || '';
 	}
 }
 

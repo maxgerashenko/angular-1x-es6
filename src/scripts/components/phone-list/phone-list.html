@@ -1,7 +1,17 @@
 <ul>
-    <li ng-repeat="phone in $ctrl.phones">
-        <span>{{phone.name}}</span>
-        <p>{{phone.snippet}}</p>
-        <img ng-src="{{'src/'+phone.imageUrl}}" >
-    </li>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">List of {{filtered.length}} items</h3>
+        </div>
+        <div class="panel-body">
+            <row>
+            <div class="col-md-8 col-md-offset-4"></div>
+                <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query as filtered">
+                    <span>{{phone.name}}</span>
+                    <p>{{phone.snippet}}</p>
+                    <img ng-src="{{'src/'+phone.imageUrl}}" >
+                </li>
+            </row>
+        </div>
+    </div>
 </ul>
