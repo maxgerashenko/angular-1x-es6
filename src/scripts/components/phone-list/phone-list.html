@@ -2,5 +2,6 @@
     <li ng-repeat="phone in $ctrl.phones">
         <span>{{phone.name}}</span>
         <p>{{phone.snippet}}</p>
+        <img ng-src="{{'src/'+phone.imageUrl}}" >
     </li>
 </ul>

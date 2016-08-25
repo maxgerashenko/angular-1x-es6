@@ -39,6 +39,13 @@ gulp.task('html', function() {
 		.pipe(plugins.connect.reload());
 });
 
+gulp.task('css', function() {
+	return gulp.src('bower_components/**/*.min.css')
+		.pipe(flatten())
+		.pipe(gulp.dest(build+'css'))
+		.pipe(plugins.connect.reload());
+});
+
 gulp.task('html-templates', function() {
 	return gulp.src(src.html2)
 		.pipe(flatten())
@@ -121,5 +128,5 @@ gulp.task('watch', function() {
 	gulp.watch(src.scripts.all, ['scripts']);
 });
 
-gulp.task('build', ['scripts', 'html', 'html-templates', 'libs', 'json', 'images']);
+gulp.task('build', ['scripts', 'html','css', 'html-templates', 'libs', 'json', 'images']);
 gulp.task('default', ['serve']);
