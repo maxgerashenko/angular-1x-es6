@@ -5,8 +5,8 @@
         </div>
         <div class="panel-body">
             <div class="row thumbnail" ng-repeat="phone in $ctrl.phones | filter:$ctrl.query as filtered">
-                <div class="col-md-4 col-lg-4 col-sm-4">
-                    <img class="img-rounded" alt={{phone.name}} width="200" height="236" ng-src="{{'src/'+phone.imageUrl}}"  >
+                <div class="col-md-4 col-lg-4 col-sm-4 phone-thumbs-m">
+                    <img class="img-rounded" alt={{phone.name}} ng-src="{{'src/'+phone.imageUrl}}"  >
                 </div>
                 <div class="col-md-8 col-lg-8 col-sm-8">
                     <span>{{phone.name}}</span>

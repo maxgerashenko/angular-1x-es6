@@ -9,8 +9,7 @@ class PersonService {
 	/*@ngInject;*/
 	constructor($q, $http) {
 		this._$q = $q;
-		this.$http = $http
-		this.phones = {};
+		this.$http = $http;
 	}
 
 	getPerson() {
@@ -19,6 +18,10 @@ class PersonService {
 
 	getPhones() {
 		return this.$http.get('/src/json/phones.json', {})
+	}
+
+	getPhoneDetails(phoneID) {
+		return this.$http.get('/src/json/' + phoneID + '.json');
 	}
 }
 

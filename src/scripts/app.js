@@ -22,9 +22,9 @@ angular.module('myApp', [
 				template: '<phone-list query="ctrl.query"></phone-list>'
 			})
 			.when('/phones/:phoneID', {
-				template: '<div><h1>Phone Details</h1></h1><p>{{phone.name}}</p></div>'
+				template: '<phone-details/>'
 			});
 
-		//$locationProvider.html5Mode(true);
+		$locationProvider.html5Mode(false);
 		}
 	);
