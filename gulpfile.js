@@ -77,7 +77,8 @@ gulp.task('json', function() {
 
 gulp.task('libs', function() {
 	/* In a real project you of course would use npm or bower to manage libraries. */
-	return gulp.src(src.libs)
+	return gulp.src('bower_components/**/*.{min.js,min.js.map}')
+		.pipe(flatten())
 		.pipe(gulp.dest(out.libs))
 		.pipe(plugins.connect.reload());
 });
