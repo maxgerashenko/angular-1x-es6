@@ -1,6 +1,6 @@
 <div class="phone-images">
     <img ng-src="src/{{img}}" class="phone"
-         ng-class="{selected: img === $ctrl.mainImageUrl}"
+         ng-class="{selected: img === $ctrl.mainImgUrl}"
          ng-repeat="img in $ctrl.phone.images" />
 </div>
 
@@ -8,9 +8,10 @@
 
 <p>{{$ctrl.phone.description}}</p>
 
+<p>{{$ctrl.phone.$ctrl.mainImgUrl}}</p>
 <ul class="phone-thumbs">
     <li ng-repeat="img in $ctrl.phone.images">
-        <img ng-src="src/{{img}}" ng-click="$ctrl.setImage(img)" />
+        <img ng-src="src/{{img}}" ng-click="$ctrl.setMainImg(img)" />
     </li>
 </ul>
 
