@@ -11,6 +11,7 @@ var plugins = require('gulp-load-plugins')();
 var src = {
 	html: 'src/**/*.html',
 	html2: 'src/scripts/components/**/*.html',
+	css: 'src/css/**',
 	libs: 'src/libs/**',
 	json: 'src/json/**',
 	img: 'src/img/**',
@@ -33,11 +34,20 @@ var out = {
 	}
 };
 
-gulp.task('html', function() {
+gulp.task('html-index', function() {
 	return gulp.src(src.html)
 		.pipe(gulp.dest(build))
 		.pipe(plugins.connect.reload());
 });
+
+gulp.task('html-templates', function() {
+	return gulp.src(src.html2)
+		.pipe(flatten())
+		.pipe(gulp.dest(out.html2))
+		.pipe(plugins.connect.reload());
+});
+
+gulp.task('html',['html-index','html-templates'], function () {});
 
 gulp.task('css-bower', function() {
 	return gulp.src('bower_components/**/*.{min.css,min.css.map,min.map}')
@@ -54,13 +64,6 @@ gulp.task('css-app', function() {
 });
 
 gulp.task('css', ['css-bower', 'css-app'],  function() {});
-
-gulp.task('html-templates', function() {
-	return gulp.src(src.html2)
-		.pipe(flatten())
-		.pipe(gulp.dest(out.html2))
-		.pipe(plugins.connect.reload());
-});
 
 /* The jshint task runs jshint with ES6 support. */
 gulp.task('jshint', function() {
@@ -136,8 +139,8 @@ gulp.task('watch', function() {
 	gulp.watch(src.html, ['html']);
 	gulp.watch(src.html2, ['html-templates']);
 	gulp.watch(src.scripts.all, ['scripts']);
-	gulp.watch('src/css', ['css']);
+	gulp.watch(src.css, ['css']);
 });
 
-gulp.task('build', ['scripts', 'html','css', 'html-templates', 'libs', 'json', 'images']);
+gulp.task('build', ['scripts', 'html','css', 'libs', 'json', 'images']);
 gulp.task('default', ['serve']);

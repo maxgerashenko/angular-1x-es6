@@ -97,3 +97,7 @@ h1 {
   font-size: 1.2em;
   font-weight: bold;
 }
+
+.nav-tabs, .nav-tabs>li>a:hover{
+  border-bottom: 0;
+}

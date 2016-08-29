@@ -16,7 +16,6 @@ angular.module('myApp', [
 	Components.name
 ])
 	.config(function($routeProvider, $locationProvider) {
-		//$locationProvider.hashPrefix('!');
 		$routeProvider
 			.when('/phones', {
 				template: '<phone-list query="ctrl.query"></phone-list>'
@@ -25,6 +24,8 @@ angular.module('myApp', [
 				template: '<phone-details/>'
 			});
 
-		$locationProvider.html5Mode(false);
+		$locationProvider
+		//	.html5Mode(true)
+		//	.hashPrefix('!')
 		}
 	);

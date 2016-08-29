@@ -6,14 +6,15 @@
         <div class="panel-body">
             <div class="row thumbnail" ng-repeat="phone in $ctrl.phones | filter:$ctrl.query as filtered">
                 <div class="col-md-4 col-lg-4 col-sm-4 phone-thumbs-m">
-                    <img class="img-rounded" alt={{phone.name}} ng-src="{{'src/'+phone.imageUrl}}"  >
+                    <a ng-href="/#/phones/{{phone.id}}" alt={{phone.name}}>
+                        <img class="img-rounded" alt={{phone.name}} ng-src="{{'src/'+phone.imageUrl}}">
+                    </a>
                 </div>
                 <div class="col-md-8 col-lg-8 col-sm-8">
-                    <span>{{phone.name}}</span>
+                    <span><a ng-href="/#/phones/{{phone.id}}">{{phone.name}}</a></span>
                     <p ng-if="phone.carrier">Carrier: {{phone.carrier}}</p>
                     <p>Age: {{phone.age}}</p>
                     <p>{{phone.snippet}}</p>
-                    <a ng-href="/#/phones/{{phone.id}}">{{phone.name}}</a>
                 </div>
             </div>
        </div>

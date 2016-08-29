@@ -8,9 +8,10 @@
 class HomeController {
 
 	/*@ngInject;*/
-	constructor(PersonService) {
+	constructor(PersonService, $location) {
 		PersonService.getPerson().then(person => {
 			this.person = person;
+			this.$location = $location;
 		});
 
 		PersonService.getPhones().then( response => {
@@ -18,6 +19,10 @@ class HomeController {
 		});
 
 		this.query = this.query || '';
+
+		this.isTabActive = function(state){
+			return state === this.$location.path()
+		}
 	}
 }
 
