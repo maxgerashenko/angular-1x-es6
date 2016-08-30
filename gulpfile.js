@@ -12,7 +12,7 @@ var src = {
 	html: 'src/**/*.html',
 	html2: 'src/scripts/components/**/*.html',
 	css: 'src/css/**',
-	libs: 'src/libs/**',
+	libs: 'bower_components/**/*.{min.js,min.js.map}',
 	json: 'src/json/**',
 	img: 'src/img/**',
 	scripts: {
@@ -90,7 +90,7 @@ gulp.task('json', function() {
 
 gulp.task('libs', function() {
 	/* In a real project you of course would use npm or bower to manage libraries. */
-	return gulp.src('bower_components/**/*.{min.js,min.js.map}')
+	return gulp.src(src.libs)
 		.pipe(flatten())
 		.pipe(gulp.dest(out.libs))
 		.pipe(plugins.connect.reload());

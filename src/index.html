@@ -28,13 +28,17 @@
 			</div>
 
 			<div class="col-sm-9 col-md-10">
-				<div ng-view></div>
+				<div class="view-container">
+					<div ng-view class="view-frame"></div>
+				</div>
 			</div>
 		</div>
 	</div>
 
+	<script src="libs/jquery.min.js"></script>
 	<script src="libs/angular.min.js"></script>
 	<script src="libs/angular-route.min.js"></script>
+	<script src="libs/angular-animate.min.js"></script>
 	<script src="scripts/app.min.js"></script>
 </body>
 </html>

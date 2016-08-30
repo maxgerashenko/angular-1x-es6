@@ -38,7 +38,7 @@ h1 {
   width: 400px;
 }
 
-.phone.selected {
+.phone:first-child {
   display: block;
 }
 
@@ -60,12 +60,6 @@ h1 {
   height: 100px;
   padding: 1em;
   width: 100px;
-}
-
-.phone-thumbs-m img {
-  height: 150px;
-  padding: 1em;
-  width: 150px;
 }
 
 .phone-thumbs li {
@@ -96,8 +90,4 @@ h1 {
 .specs > li > span {
   font-size: 1.2em;
   font-weight: bold;
-}
-
-.nav-tabs, .nav-tabs>li>a:hover{
-  border-bottom: 0;
 }

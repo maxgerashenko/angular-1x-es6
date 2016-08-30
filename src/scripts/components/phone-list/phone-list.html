@@ -4,19 +4,37 @@
             <h3 class="panel-title">List of {{filtered.length}} items</h3>
         </div>
         <div class="panel-body">
-            <div class="row thumbnail" ng-repeat="phone in $ctrl.phones | filter:$ctrl.query as filtered">
-                <div class="col-md-4 col-lg-4 col-sm-4 phone-thumbs-m">
-                    <a ng-href="/#/phones/{{phone.id}}" alt={{phone.name}}>
-                        <img class="img-rounded" alt={{phone.name}} ng-src="{{'src/'+phone.imageUrl}}">
+
+            <ul class="phones">
+                <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query as filtered" class="thumbnail phone-list-item">
+                    <a href="#/phones/{{phone.id}}" alt={{phone.name}} class="thumb">
+                        <img ng-src="{{'src/'+phone.imageUrl}}" alt="{{phone.name}}" />
                     </a>
-                </div>
-                <div class="col-md-8 col-lg-8 col-sm-8">
-                    <span><a ng-href="/#/phones/{{phone.id}}">{{phone.name}}</a></span>
+                    <a href="#/phones/{{phone.id}}">{{phone.name}} class="thumb"</a>
                     <p ng-if="phone.carrier">Carrier: {{phone.carrier}}</p>
-                    <p>Age: {{phone.age}}</p>
-                    <p>{{phone.snippet}}</p>
-                </div>
-            </div>
+                    <div>{{phone.snippet}}</div>
+                </li>
+            </ul>
        </div>
     </div>
 </ul>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-10">
+            <!--Body content-->
+
+            <ul class="phones">
+                <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp"
+                    class="thumbnail phone-list-item">
+                    <a href="#!/phones/{{phone.id}}" class="thumb">
+                        <img ng-src="{{phone.imageUrl}}" alt="{{phone.name}}" />
+                    </a>
+                    <a href="#!/phones/{{phone.id}}">{{phone.name}}</a>
+                    <p>{{phone.snippet}}</p>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</div>
