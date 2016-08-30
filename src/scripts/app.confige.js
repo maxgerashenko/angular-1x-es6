@@ -1,16 +1,17 @@
-angular.module('myApp')
-    .config(['$locationProvider', '$routeProvider', function($routeProvider, $locationProvider) {
-        $locationProvider.hashPrefix('!');
+const config = angular.module('config', [])
+    .config(function($routeProvider, $locationProvider) {
         $routeProvider
             .when('/phones', {
-                template: '<phone-list query="ctrl.query"/>'
+                template: '<phone-list query="ctrl.query"></phone-list>'
             })
-            .when('/phones/:phoneId', {
-                template: '<phone-detail></phone-detail>'
-            })
-            .otherwise('/phones');
+            .when('/phones/:phoneID', {
+                template: '<phone-details/>'
+            });
 
-        // configure html5 to get links working on jsfiddle
-        $locationProvider.html5Mode(true);
+        $locationProvider
+        //	.html5Mode(true)
+        //	.hashPrefix('!')
     }
-]);
+);
+
+export default config;
