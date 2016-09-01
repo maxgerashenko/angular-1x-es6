@@ -1,6 +1,4 @@
-import Person from '../model/Person';
-
-class PersonService {
+class DataService {
 
 	/*
 	  The below annotation will be processes by ngAnnotate, which
@@ -12,12 +10,8 @@ class PersonService {
 		this.$http = $http;
 	}
 
-	getPerson() {
-		return this._$q.when(new Person());
-	}
-
 	getPhones() {
-		return this.$http.get('/src/json/phones.json', {})
+		return this.$http.get('/src/json/phones.json');
 	}
 
 	getPhoneDetails(phoneID) {
@@ -25,4 +19,4 @@ class PersonService {
 	}
 }
 
-export default PersonService;
+export default DataService;

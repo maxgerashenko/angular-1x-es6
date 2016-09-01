@@ -8,21 +8,35 @@
 class HomeController {
 
 	/*@ngInject;*/
-	constructor(PersonService, $location) {
-		PersonService.getPerson().then(person => {
-			this.person = person;
-			this.$location = $location;
+	constructor(DataService, CartService, $location) {
+		this.$location = $location;
+
+		var self = this;
+
+		CartService.getCart().then( response => {
+			this.cart = response.data;
 		});
 
-		PersonService.getPhones().then( response => {
+		DataService.getPhones().then( response => {
 			this.phones = response.data;
+		});
+
+		CartService.observeFoo().then(null, null, function(foo){
+			console.log('foo',foo);
+
+			self.cart = foo;
 		});
 
 		this.query = this.query || '';
 
 		this.isTabActive = function(state){
-			return state === this.$location.path()
-		}
+			return state === this.$location.path();
+		};
+	}
+
+	addToCart(item) {
+		console.log('addToCart(item)');
+		CartService.addToCart(item);
 	}
 }
 

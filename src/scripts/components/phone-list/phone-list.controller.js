@@ -1,11 +1,17 @@
 
 class phoneListCtrl {
-    constructor(PersonService){
+    constructor(DataService, CartService){
         'ngInject';
+        this.CartService = CartService;
 
-        PersonService.getPhones().then( response => {
+        DataService.getPhones().then( response => {
             this.phones = response.data || [];
-        })
+        });
+    }
+
+    addToCart(item){
+        console.log('item', item);
+        this.CartService.addToCart(item);
     }
 }
 

@@ -140,6 +140,7 @@ gulp.task('watch', function() {
 	gulp.watch(src.html2, ['html-templates']);
 	gulp.watch(src.scripts.all, ['scripts']);
 	gulp.watch(src.css, ['css']);
+	gulp.watch(src.json, ['json']);
 });
 
 gulp.task('build', ['scripts', 'html','css', 'libs', 'json', 'images']);

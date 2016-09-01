@@ -1,5 +1,5 @@
 <ul>
-    <div class="panel panel-default">
+    <div class="panel panel-default" ng-controller="TestController">
         <div class="panel-heading">
             <h3 class="panel-title">List of {{filtered.length}} items</h3>
         </div>
@@ -10,7 +10,12 @@
                     <a href="#/phones/{{phone.id}}" alt={{phone.name}} class="thumb">
                         <img ng-src="{{'src/'+phone.imageUrl}}" alt="{{phone.name}}" />
                     </a>
-                    <a href="#/phones/{{phone.id}}">{{phone.name}} class="thumb"</a>
+                    <p>
+                        <a href="#/phones/{{phone.id}}" class="thumb">{{phone.name}}</a>
+                        <button type="button" class="btn btn-default" ng-click="$ctrl.addToCart(phone)">
+                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart
+                        </button>
+                    </p>
                     <p ng-if="phone.carrier">Carrier: {{phone.carrier}}</p>
                     <div>{{phone.snippet}}</div>
                 </li>
@@ -18,23 +23,3 @@
        </div>
     </div>
 </ul>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-10">
-            <!--Body content-->
-
-            <ul class="phones">
-                <li ng-repeat="phone in $ctrl.phones | filter:$ctrl.query | orderBy:$ctrl.orderProp"
-                    class="thumbnail phone-list-item">
-                    <a href="#!/phones/{{phone.id}}" class="thumb">
-                        <img ng-src="{{phone.imageUrl}}" alt="{{phone.name}}" />
-                    </a>
-                    <a href="#!/phones/{{phone.id}}">{{phone.name}}</a>
-                    <p>{{phone.snippet}}</p>
-                </li>
-            </ul>
-
-        </div>
-    </div>
-</div>

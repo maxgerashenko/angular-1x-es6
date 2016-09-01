@@ -12,7 +12,6 @@
 
 	<div class="container-fluid">
 		<div class="jumbotron" style="padding-bottom: 0">
-			<h2>Hello {{ ctrl.person.name | upper }}!</h2>
 			<h4>query: {{ ctrl.query }}</h4>
 			<!-- Nav tabs -->
 			<ul class="nav nav-tabs" role="tablist">
@@ -24,12 +23,29 @@
 		</div>
 		<div class="row">
 			<div class="col-sm-3 col-md-2">
-				<search-box query="ctrl.query"/>
+
+				<search-box query="ctrl.query"></search-box>
+				<div class="cart">
+					<h3> Cart</h3>
+					<h3>ctrl.cart: {{ctrl.cart.length}}</h3>
+					<ul>
+						<li ng-repeat="item in ctrl.cart" class="thumbnail">
+
+							<a href="#/phones/{{item.id}}" alt={{item.name}} class="thumb-s">
+								<img ng-src="{{'src/'+item.imageUrl}}" alt="{{item.name}}" />
+							</a>
+							<span>{{item.name}}</span>
+						</li>
+					</ul>
+				</div>
 			</div>
 
 			<div class="col-sm-9 col-md-10">
 				<div class="view-container">
-					<div ng-view class="view-frame"></div>
+					<p> test1: {{TestController.cart}}</p>
+					<div ng-view class="view-frame">
+
+					</div>
 				</div>
 			</div>
 		</div>
@@ -40,5 +56,6 @@
 	<script src="libs/angular-route.min.js"></script>
 	<script src="libs/angular-animate.min.js"></script>
 	<script src="scripts/app.min.js"></script>
+
 </body>
 </html>

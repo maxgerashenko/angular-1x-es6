@@ -1,8 +1,8 @@
 
 class phoneDetailsCtrl {
-    constructor(PersonService, $routeParams) {
+    constructor(DataService, $routeParams) {
         'ngInject';
-        PersonService.getPhoneDetails($routeParams.phoneID).then(response => {
+        DataService.getPhoneDetails($routeParams.phoneID).then(response => {
             this.phone = response.data;
             this.mainImgUrl = this.phone.images[0];
         })
