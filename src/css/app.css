@@ -33,6 +33,14 @@ h1 {
   padding-bottom: 0.5em;
 }
 
+.thumbnail a>img{
+  padding: 10px;
+}
+
+.thumbnail a.thumb-s > img{
+  padding: 5px;
+}
+
 /* View: Phone detail */
 .phone {
   background-color: white;

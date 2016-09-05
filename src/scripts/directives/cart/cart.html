@@ -1,0 +1,13 @@
+<div class="cart">
+    <h3> Cart</h3>
+    <h3>cart.cart: {{cartCtrl.cart}}</h3>
+    <h3>carS </h3>
+    <ul>
+        <li ng-repeat="item in cartCtrl.cart" class="thumbnail">
+            <a href="#/phones/{{item.id}}" alt={{item.name}} class="thumb-s">
+                <img ng-src="{{'src/'+item.imageUrl}}" alt="{{item.name}}" />
+            </a>
+            <span>{{item.name}}</span>
+        </li>
+    </ul>
+</div>

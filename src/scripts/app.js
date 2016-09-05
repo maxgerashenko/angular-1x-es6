@@ -7,16 +7,19 @@ import Services from './services/services';
 import Filters from './filters/filters';
 import Controllers from './controllers/controllers';
 import Components from './components/components.js';
+import Directives from './directives/directives.js';
 import Animation from './app.animation.js';
 import Config from './app.confige.js';
 
 angular.module('myApp', [
 	'ngRoute',
 	'ngAnimate',
+	'ngMaterial',
 	Config.name,
 	Animation.name,
 	Controllers.name,
 	Filters.name,
 	Services.name,
-	Components.name
+	Components.name,
+	Directives.name
 ]);

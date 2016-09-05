@@ -10,7 +10,7 @@ var plugins = require('gulp-load-plugins')();
 
 var src = {
 	html: 'src/**/*.html',
-	html2: 'src/scripts/components/**/*.html',
+	html2: ['src/scripts/components/**/*.html','src/scripts/directives/**/*.html'],
 	css: 'src/css/**',
 	libs: 'bower_components/**/*.{min.js,min.js.map}',
 	json: 'src/json/**',
