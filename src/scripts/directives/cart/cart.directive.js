@@ -1,7 +1,7 @@
 import CartController from './cart.controller.js'
 
 class CartDirective {
-    constructor($http) {
+    constructor($http, CartService) {
         this.$http = $http;
         this.restrict = 'E';
         this.bindToController=true;
@@ -10,17 +10,12 @@ class CartDirective {
         this.controllerAs= 'cartCtrl';
 
         this.scope = {
-            cart: '=',
-            remove: '&'
         }
     }
 
+    // works
     compile(){
-        console.log('compile')
-    }
 
-    link(){
-        console.log('link')
     }
 }
 
