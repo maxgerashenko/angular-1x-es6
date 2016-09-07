@@ -1,25 +1,29 @@
 import CartController from './cart.controller.js'
 
-const  CartDirective = function(CartService) {
-    return {
-        bindToController: true,
-        templateUrl: './src/templates/cart.html',
-        controller: CartController,
-        controllerAs: 'cartCtrl',
-        restrict: 'E',
-        scope: {
-            cart: '=cart'
-        },
-        // for html
-        compile: function(tElement) {
-        },
-        // for watch
-        link: function(scope, element, attrs) {
-            CartService.getCart().then(response=>{
-                this.cart = response.data;
-            })
+class CartDirective {
+    constructor($http) {
+        this.$http = $http;
+        this.restrict = 'E';
+        this.bindToController=true;
+        this.templateUrl= './src/templates/cart.html';
+        this.controller= CartController;
+        this.controllerAs= 'cartCtrl';
+
+        this.scope = {
+            cart: '=',
+            remove: '&'
         }
     }
-};
+
+    compile(){
+        console.log('compile')
+    }
+
+    link(){
+        console.log('link')
+    }
+}
+
+//CartDirective.$inject = ['$http'];
 
 export default CartDirective

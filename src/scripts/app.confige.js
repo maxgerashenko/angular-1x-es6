@@ -6,12 +6,12 @@ const config = angular.module('config', [])
                 controller: 'TestController',
                 controllerAs: 'ctrlTest',
                 resolve: {
-                    cart: function(CartService){
-                        return CartService.getCart().then(function(response){
-                            console.log('response.data', response.data)
-                            return response.data;
-                        });
-                    }
+                    //cart: function(CartService){
+                    //    return CartService.getCart().then(function(response){
+                    //        console.log('response.data', response.data)
+                    //        return response.data;
+                    //    });
+                    //}
                 }
             })
             .when('/phones/:phoneID', {

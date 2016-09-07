@@ -1,13 +1,14 @@
 <div class="cart">
-    <h3> Cart</h3>
-    <h3>cart.cart: {{cartCtrl.cart}}</h3>
-    <h3>carS </h3>
+    <h3>Cart</h3>
     <ul>
-        <li ng-repeat="item in cartCtrl.cart" class="thumbnail">
+        <li ng-repeat="item in cartCtrl.cart.phones track by $index" class="thumbnail">
             <a href="#/phones/{{item.id}}" alt={{item.name}} class="thumb-s">
                 <img ng-src="{{'src/'+item.imageUrl}}" alt="{{item.name}}" />
             </a>
             <span>{{item.name}}</span>
+            <button type="button" class="btn btn-default" ng-click="cartCtrl.removeFromCart(item)">
+                <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> remove
+            </button>
         </li>
     </ul>
 </div>

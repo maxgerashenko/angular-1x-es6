@@ -7,34 +7,40 @@ class CartService {
     /*@ngInject;*/
     constructor($q, $http) {
         this._$q = $q;
-        this.$http = $http;
+        this._$http = $http;
         this.defer = this._$q.defer();
 
-        this.getCart().then((response)=>{
-            this.data = response.data;
-        });
+        this._cart = {};
 
     }
 
-    observeFoo() {
-        return this.defer.promise;
+    _isCartEmpty(){
+        return !this._cart.phones;
     }
 
     getCart(){
-        let promise = (this.data) ?
-            this._$q.when(function(){
-                return this.data;
-            }):
-            this.$http.get('/src/json/cart.json');
-        console.log(promise);
-        return promise;
+        var self = this;
+        if(this._isCartEmpty()){
+            return this._$http.get('/src/json/cart.json',{}).then((resolve)=>{
+                self._cart.phones = resolve.data;
+                self.defer.resolve(self._cart);
+                return self.defer.promise;
+            })
+        }
+         else {
+            return this._$q.when(self._cart);
+        }
     }
 
     addToCart(item){
-        console.log('item', item);
-        console.log('this.data', this.data);
-        this.data.push(item);
-        this.defer.notify(this.data);
+        this._cart.phones.push(item);
+    }
+
+    removeFromCart(item){
+        function removeById(value) {
+            return value.id !== item.id;
+        }
+        this._cart.phones = this._cart.phones.filter(removeById)
     }
 
     getPhoneDetails(phoneID) {

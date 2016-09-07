@@ -14,6 +14,23 @@
 	<div class="container-fluid">
 		<div class="jumbotron" style="padding-bottom: 0">
 			<h4>query: {{ ctrl.query }}</h4>
+			<div class="cart">
+				<h3> Cart</h3>
+				<h3>cart.cart: {{cartCtrl.cart}}</h3>
+				<h3>cards </h3>
+				<ul>
+					<li ng-repeat="item in ctrl.cart.phones track by $index" class="thumbnail">
+						<a href="#/phones/{{item.id}}" alt={{item.name}} class="thumb-s">
+							<img ng-src="{{'src/'+item.imageUrl}}" alt="{{item.name}}" />
+
+						</a>
+						<button type="button" class="btn btn-default" ng-click="ctrl.removeFromCart(item)">
+							<span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> remove
+						</button>
+						<span>{{item.name}}</span>
+					</li>
+				</ul>
+			</div>
 			<!-- Nav tabs -->
 			<ul class="nav nav-tabs" role="tablist">
 				<li role="presentation" ng-class="{active:ctrl.isTabActive('')}"><a href="/" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
@@ -27,7 +44,7 @@
 
 				<search-box query="ctrl.query"></search-box>
 				{{ctrl.cart.length}}
-				<cart cart="{{ctrl.cart}}"></cart>
+				<cart cart="ctrl.cart" remove="ctrl.removeFromCart"></cart>
 			</div>
 
 			<div class="col-sm-9 col-md-10">

@@ -8,35 +8,33 @@
 class HomeController {
 
 	/*@ngInject;*/
-	constructor(DataService, CartService, $location) {
+	constructor(DataService, $location, CartService) {
 		this.$location = $location;
-
+		this.CartService = CartService;
 		var self = this;
-
-		CartService.getCart().then( response => {
-			this.cart = response.data;
-		});
 
 		DataService.getPhones().then( response => {
 			this.phones = response.data;
 		});
 
-		CartService.observeFoo().then(null, null, function(foo){
-			console.log('foo',foo);
-
-			self.cart = foo;
-		});
 
 		this.query = this.query || '';
 
 		this.isTabActive = function(state){
 			return state === this.$location.path();
 		};
+
+		this.cart={};
+
+		console.log('CartService.getCart()', CartService.getCart());
+		CartService.getCart().then((resolve)=> {
+				this.cart = resolve
+			}
+		)
 	}
 
-	addToCart(item) {
-		console.log('addToCart(item)');
-		CartService.addToCart(item);
+	removeFromCart(item) {
+		this.CartService.removeFromCart(item);
 	}
 }
 
