@@ -5,10 +5,10 @@
             <a href="#/phones/{{item.id}}" alt={{item.name}} class="thumb-s">
                 <img ng-src="{{'src/'+item.imageUrl}}" alt="{{item.name}}" />
             </a>
-            <span>{{item.name}}</span>
             <button type="button" class="btn btn-default" ng-click="cartCtrl.removeFromCart(item)">
                 <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> remove
             </button>
+            <span>{{item.name}}</span>
         </li>
     </ul>
 </div>
