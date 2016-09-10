@@ -15,6 +15,7 @@ angular.module('myApp', [
 	'ngRoute',
 	'ngAnimate',
 	'ngMaterial',
+	'afklStickyElement',
 	Config.name,
 	Animation.name,
 	Controllers.name,

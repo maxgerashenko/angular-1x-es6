@@ -6,7 +6,8 @@
 	<link rel="stylesheet" href="css/bootstrap-theme.min.css" />
 	<link rel="stylesheet" href="css/app.css" />
 	<link rel="stylesheet" href="css/app.animations.css" />
-	<link rel="stylesheet" href="/node_modules/angular-material/angular-material.css">
+	<link rel="stylesheet" href="/css/angular-material.min.css">
+	<link rel="stylesheet" href="/css/ng-sticky-element.min.css">
 	<script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
 	<script src="libs/jquery.min.js"></script>
 	<script src="libs/angular.min.js"></script>
@@ -32,8 +33,8 @@
 			<div class="col-sm-3 col-md-2">
 
 				<search-box query="ctrl.query"></search-box>
-				{{ctrl.cart.length}}
-				<cart cart="ctrl.cart" remove="ctrl.removeFromCart"></cart>
+					{{ctrl.cart.length}}
+				<cart afkl-sticky-element></cart>
 			</div>
 
 			<div class="col-sm-9 col-md-10">
@@ -48,9 +49,11 @@
 	</div>
 
 	<script src="libs/angular-route.min.js"></script>
-	<script src="libs/angular-aria.min.js"></script>
 	<script src="libs/angular-animate.min.js"></script>
+	<script src="libs/angular-aria.min.js"></script>
+	<script src="libs/angular-messages.min.js"></script>
 	<script src="libs/angular-material.min.js"></script>
+	<script src="libs/ng-sticky-element.min.js"></script>
 	<script src="scripts/app.min.js"></script>
 
 </body>

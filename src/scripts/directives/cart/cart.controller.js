@@ -2,10 +2,10 @@
 class CartController {
     constructor(CartService) {
         'ngInject';
-        this._CartService = CartService
+        this._CartService = CartService;
         this.cart = CartService.getCart().then(resolve=>{
             this.cart = resolve;
-        })
+        });
     }
 
     removeFromCart(item){

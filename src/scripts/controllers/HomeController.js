@@ -26,7 +26,6 @@ class HomeController {
 
 		this.cart={};
 
-		console.log('CartService.getCart()', CartService.getCart());
 		CartService.getCart().then((resolve)=> {
 				this.cart = resolve
 			}
