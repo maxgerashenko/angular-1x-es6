@@ -36,13 +36,20 @@ class CartService {
         })
     }
 
-    isAvailable(id, required){
-        required = (required)?required:1;
-        return this._storage.phones[id].quantity >= required;
+    getItemSaldo(id){
+        // TODO: Fix problem with elements when index  = -1
+
+        let index = findOjectIndexById(id, this._cart.phones);
+        if(index > 0){
+            let required = (this._cart.phones[index].count) ? this._cart.phones[index].count : 1;
+            return this._storage.phones[id].quantity - required;
+        }
+            return 1
+
     }
 
     addToCart(item){
-        let elementIndex = findOjectIndexById(item, this._cart.phones);
+        let elementIndex = findOjectIndexById(item.id, this._cart.phones);
         if (elementIndex > -1){
             let itemCount = this._cart.phones[elementIndex].count;
             this._cart.phones[elementIndex].count = (itemCount) ? itemCount+1 : 2;
@@ -52,10 +59,29 @@ class CartService {
     }
 
     removeFromCart(item){
-        function removeById(value) {
-            return value.id !== item.id;
+        function remove(element, index, array) {
+            if(element.id === item.id){
+                if(element.count < 2){
+                    console.log('array.splice(index, 1);', index );
+                    array.splice(index, 1);
+                } else {
+                    element.count--;
+                }
+            }
         }
-        this._cart.phones = this._cart.phones.filter(removeById)
+
+        this._cart.phones.forEach(remove)
+    }
+
+    getItemsCount(){
+        let count = 0;
+        function Count(element, index, array){
+            console.log('count += element.count+0',count += element.count+0);
+            //count += element.count+0;
+        }
+        if(this._cart.phones)
+            this._cart.phones.forEach(Count);
+        return count;
     }
 
     getPhoneDetails(phoneID) {
@@ -63,10 +89,9 @@ class CartService {
     }
 }
 
-
-function findOjectIndexById(object, array){
+function findOjectIndexById(id, array){
     for(var i = 0; i < array.length; i += 1) {
-        if(array[i].id === object.id) {
+        if(array[i].id === id) {
             return i;
         }
     }

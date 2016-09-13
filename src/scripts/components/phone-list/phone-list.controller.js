@@ -11,12 +11,12 @@ class phoneListCtrl {
         this.selected = {};
     }
 
-    isAvailable(id, quantity){
-        return this._CartService.isAvailable(id, quantity);
+    isAvailable(item){
+        item.count = (item.count)?item.count:1;
+        return this._CartService.getItemSaldo(item.id) > 0 ;
     }
 
     addToCart(item){
-        console.log('item', item);
         this._CartService.addToCart(item);
     }
 }

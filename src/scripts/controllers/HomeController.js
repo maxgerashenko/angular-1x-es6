@@ -35,6 +35,10 @@ class HomeController {
 	removeFromCart(item) {
 		this.CartService.removeFromCart(item);
 	}
+
+	getItemsCount(){
+		return this.CartService.getItemsCount();
+	}
 }
 
 export default HomeController;

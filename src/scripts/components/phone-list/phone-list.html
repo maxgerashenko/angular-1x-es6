@@ -8,13 +8,13 @@
             <ul dnd-list="$ctrl.phones" class="phones">
                 <li
                     ng-repeat="phone in $ctrl.phones | filter:$ctrl.query as filtered" class="thumbnail phone-list-item"
-                    ng-class="{unavailable:!$ctrl.isAvailable(phone.id)}"
+                    ng-class="{unavailable:!$ctrl.isAvailable(phone)}"
                     dnd-draggable="phone"
                     dnd-selected="$ctrl.selected = phone"
                     dnd-moved="$ctrl.phones.splice($index, 1)"
                     dnd-effect-allowed="copyMove"
                     ng-class="{'selected': $ctrl.selected === phone}"
-                    dnd-disable-if="!$ctrl.isAvailable(phone.id)"
+                    dnd-disable-if="!$ctrl.isAvailable(phone)"
                 >
                     <a href="#/phones/{{phone.id}}" alt={{phone.name}} class="thumb">
                         <img ng-src="{{'src/'+phone.imageUrl}}" alt="{{phone.name}}" />
@@ -24,13 +24,13 @@
                         <button
                                 type="button" class="btn btn-default"
                                 ng-click="$ctrl.addToCart(phone)"
-                                ng-disabled="!$ctrl.isAvailable(phone.id)">
+                                ng-disabled="!$ctrl.isAvailable(phone)">
                             <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart
                         </button>
                     </p>
                     <p ng-if="phone.carrier">Carrier: {{phone.carrier}}</p>
                     <div>{{phone.snippet}}</div>
-                    <div ng-if="!$ctrl.isAvailable(phone.id)">Unavailable</div>
+                    <div ng-if="!$ctrl.isAvailable(phone)">Unavailable</div>
                 </li>
             </ul>
        </div>
