@@ -14,23 +14,41 @@
                     dnd-moved="$ctrl.phones.splice($index, 1)"
                     dnd-effect-allowed="copyMove"
                     ng-class="{'selected': $ctrl.selected === phone}"
-                    dnd-disable-if="!$ctrl.isAvailable(phone)"
-                >
-                    <a href="#/phones/{{phone.id}}" alt={{phone.name}} class="thumb">
-                        <img ng-src="{{'src/'+phone.imageUrl}}" alt="{{phone.name}}" />
-                    </a>
-                    <p>
-                        <a href="#/phones/{{phone.id}}" class="thumb">{{phone.name}}</a>
-                        <button
-                                type="button" class="btn btn-default"
-                                ng-click="$ctrl.addToCart(phone)"
-                                ng-disabled="!$ctrl.isAvailable(phone)">
-                            <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Add to Cart
-                        </button>
-                    </p>
-                    <p ng-if="phone.carrier">Carrier: {{phone.carrier}}</p>
-                    <div>{{phone.snippet}}</div>
-                    <div ng-if="!$ctrl.isAvailable(phone)">Unavailable</div>
+                    dnd-disable-if="!$ctrl.isAvailable(phone)">
+
+
+
+
+                        <div class="card">
+                            <div class="card-block">
+                                <h4 class="card-title">
+                                    <a href="#/phones/{{phone.id}}">{{phone.name}}</a>
+                                    <span ng-if="!$ctrl.isAvailable(phone)">(unavailable)</span>
+                                </h4>
+                                <h6 ng-if="phone.carrier" class="card-subtitle text-muted">
+                                    <p >Carrier: {{phone.carrier}}</p>
+                                </h6>
+                            </div>
+
+                            <a href="#/phones/{{phone.id}}" alt={{phone.name}} class="thumb">
+                                <img class="card-img-top" ng-src="{{'src/'+phone.imageUrl}}" alt="{{phone.name}}" />
+                            </a>
+
+                            <div class="card-block">
+                                <p class="card-text">
+                                    {{phone.snippet}}
+                                </p>
+                                <button
+                                        class="btn btn-primary"
+                                        type="button" class="btn btn-default"
+                                        ng-click="$ctrl.addToCart(phone)"
+                                        ng-disabled="!$ctrl.isAvailable(phone)">
+                                    <span>
+                                        Add to Cart
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
                 </li>
             </ul>
        </div>
