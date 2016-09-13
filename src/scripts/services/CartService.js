@@ -9,8 +9,8 @@ class CartService {
         this._$q = $q;
         this._$http = $http;
         this.defer = this._$q.defer();
-
         this._cart = {};
+        this._storage = {};
 
     }
 
@@ -20,20 +20,35 @@ class CartService {
 
     getCart(){
         var self = this;
-        if(this._isCartEmpty()){
-            return this._$http.get('/src/json/cart.json',{}).then((resolve)=>{
-                self._cart.phones = resolve.data;
-                self.defer.resolve(self._cart);
-                return self.defer.promise;
-            })
-        }
-         else {
-            return this._$q.when(self._cart);
-        }
+        return this._$http.get('/src/json/storage.json',{}).then((resolve)=>{
+            self._storage.phones = resolve.data;
+
+            if(this._isCartEmpty()){
+                return self._$http.get('/src/json/cart.json',{}).then((resolve)=>{
+                    self._cart.phones = resolve.data;
+                    self.defer.resolve(self._cart);
+                    return self.defer.promise;
+                })
+            }
+             else {
+                return this._$q.when(self._cart);
+            }
+        })
+    }
+
+    isAvailable(id, required){
+        required = (required)?required:1;
+        return this._storage.phones[id].quantity >= required;
     }
 
     addToCart(item){
-        this._cart.phones.push(item);
+        let elementIndex = findOjectIndexById(item, this._cart.phones);
+        if (elementIndex > -1){
+            let itemCount = this._cart.phones[elementIndex].count;
+            this._cart.phones[elementIndex].count = (itemCount) ? itemCount+1 : 2;
+        } else {
+            this._cart.phones.push(item);
+        }
     }
 
     removeFromCart(item){
@@ -46,6 +61,16 @@ class CartService {
     getPhoneDetails(phoneID) {
         return this.$http.get('/src/json/' + phoneID + '.json');
     }
+}
+
+
+function findOjectIndexById(object, array){
+    for(var i = 0; i < array.length; i += 1) {
+        if(array[i].id === object.id) {
+            return i;
+        }
+    }
+    return -1;
 }
 
 export default CartService;

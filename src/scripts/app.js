@@ -16,6 +16,7 @@ angular.module('myApp', [
 	'ngAnimate',
 	'ngMaterial',
 	'afklStickyElement',
+	'dndLists',
 	Config.name,
 	Animation.name,
 	Controllers.name,

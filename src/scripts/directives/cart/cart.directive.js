@@ -1,7 +1,5 @@
 import CartController from './cart.controller.js'
 
-
-
 //class CartDirective {
 //    /*@ngInject*/
 //    constructor($http, $mdSticky, $scope) {

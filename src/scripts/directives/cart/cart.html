@@ -1,7 +1,16 @@
 <div class="cart">
     <h3>Cart</h3>
+    <h4>Count: {{cartCtrl.cart.phones.length}}</h4>
+
     <ul>
-        <li ng-repeat="item in cartCtrl.cart.phones track by $index" class="thumbnail">
+        <li class="thumbnail"
+            ng-repeat="item in cartCtrl.cart.phones track by $index"
+            dnd-list="cartCtrl.cart.phones"
+            dnd-selected="cartCtrl.selected = item"
+            dnd-drop="cartCtrl.onDrop(event, index, item, external, type, 'itemType')"
+            dnd-effect-allowed="copy"
+            ng-class="{'selected': cartCtrl.selected === item, 'unavailable':!cartCtrl.isAvailable(item.id, item.count)}"
+        >
             <a href="#/phones/{{item.id}}" alt={{item.name}} class="thumb-s">
                 <img ng-src="{{'src/'+item.imageUrl}}" alt="{{item.name}}" />
             </a>
@@ -9,6 +18,8 @@
                 <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> remove
             </button>
             <span>{{item.name}}</span>
+            <span ng-if="item.count">X {{item.count}}</span>
+            <div ng-if="!cartCtrl.isAvailable(item.id, item.count)">Unavailable</div>
         </li>
     </ul>
 </div>

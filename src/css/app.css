@@ -115,3 +115,25 @@ h1 {
   overflow: hidden;
   max-width: 250px;
 }
+
+ul[dnd-list], ul[dnd-list] > li {
+  position: relative;
+}
+
+
+/**
+ * The dndDraggingSource class will be applied to
+ * the source element of a drag operation. It makes
+ * sense to hide it to give the user the feeling
+ * that he's actually moving it.
+ */
+ul[dnd-list] .dndDraggingSource {
+  display: none;
+}
+
+.phone-list-item.unavailable,
+.cart .thumbnail.unavailable{
+  background: rgba(0,0,0,.12);
+}
+
+

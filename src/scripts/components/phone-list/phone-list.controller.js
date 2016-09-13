@@ -2,16 +2,22 @@
 class phoneListCtrl {
     constructor(DataService, CartService){
         'ngInject';
-        this.CartService = CartService;
+        this._CartService = CartService;
 
         DataService.getPhones().then( response => {
             this.phones = response.data || [];
         });
+
+        this.selected = {};
+    }
+
+    isAvailable(id, quantity){
+        return this._CartService.isAvailable(id, quantity);
     }
 
     addToCart(item){
         console.log('item', item);
-        this.CartService.addToCart(item);
+        this._CartService.addToCart(item);
     }
 }
 
