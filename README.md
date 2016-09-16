@@ -1,11 +1,9 @@
-To use this sample project you need gulp installed (`npm install -g gulp`).
+Install
+=======
+In command line: (`npm install -g gulp`).
+Start server [4242](http://localhost:4242), build, watch: `gulp serve`
 
-The default task will execute `gulp serve` which build the sources, watch for changes
-and serve them on port [4242](http://localhost:4242).
-
-You will find several comments in the sources and build files and I wrote a
-[blog post](https://www.timroes.de/2015/07/29/using-ecmascript-6-es6-with-angularjs-1-x/) on
-how to use AngularJS 1 with ECMAScript 6.
+AngularJS 1.x with ECMAScript 6.
 
 License
 =======
