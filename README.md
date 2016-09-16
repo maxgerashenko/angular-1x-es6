@@ -1,7 +1,8 @@
 Install
 =======
 In command line: (`npm install -g gulp`).
-Start server [4242](http://localhost:4242), build, watch: `gulp serve`
+
+Start server [4242](http://localhost:4242), build, watch: `gulp serve` or `npm start`
 
 AngularJS 1.x with ECMAScript 6.
 
