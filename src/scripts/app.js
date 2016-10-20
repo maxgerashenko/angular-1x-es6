@@ -17,6 +17,7 @@ angular.module('myApp', [
 	'ngMaterial',
 	'afklStickyElement',
 	'dndLists',
+	'n3-line-chart',
 	Config.name,
 	Animation.name,
 	Controllers.name,

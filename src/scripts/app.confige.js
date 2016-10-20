@@ -16,6 +16,11 @@ const config = angular.module('config', [])
             })
             .when('/phones/:phoneID', {
                 template: '<phone-details/>'
+            })
+            .when('/settings', {
+                template: '<div><h1>D3 Chart</h1><linechart data="ctrlSettings.data" options="ctrlSettings.options"></linechart></div>',
+                controller: 'SettingsController',
+                controllerAs: 'ctrlSettings'
             });
 
         $locationProvider
